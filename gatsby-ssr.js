@@ -1,9 +1,7 @@
 import React from "react"
-import {IdentityContextProvider} from "react-netlify-identity-widget"
+import SiteTemplate from './src/templates/site'
 
-export const wrapRootElement = ({element}) => {
-  return (
-    <IdentityContextProvider
-      url={"https://baldh-jamstack-subscription.netlify.app/.netlify/identity"}>{element}</IdentityContextProvider>
-  )
-}
+export const wrapPageElement = ({element, props}) => (
+  <SiteTemplate {...props}>{element}</SiteTemplate>
+)
+

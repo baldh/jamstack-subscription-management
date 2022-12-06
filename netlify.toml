@@ -7,4 +7,3 @@
     publish =  "public"
 [context.production.environment]
     NODE_VERSION = "19.1.0"
-    NPM_FLAGS = "--legacy-peer-deps"
