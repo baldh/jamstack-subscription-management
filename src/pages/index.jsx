@@ -1,13 +1,17 @@
-import React from "react"
-
-const isBrowser = typeof window !== "undefined"
+import React,{useState, useEffect} from "react"
 export default function IndexPage() {
-  let netlifyIdentity = undefined
-  if(isBrowser) {
-    netlifyIdentity = window.netlifyIdentity
-  }
-  return <>
-    <button onClick={() => netlifyIdentity.open()}>Login</button>
-    <p>Build something</p>
-  </>
+  console.log("Child renders")
+  const [netlifyIdentity, setNetlifyIdentity] = useState(undefined)
+
+  useEffect(()=> {
+    setNetlifyIdentity(window.netlifyIdentity)
+  },[])
+
+  useEffect(()=> {
+      if(netlifyIdentity !== undefined) console.log("netlifyIdentity has changed")
+  }, [netlifyIdentity])
+
+
+  if(netlifyIdentity === undefined) return <button>Loading...</button>
+  return <button onClick={()=> console.log(netlifyIdentity)}>Log Data</button>
 }
