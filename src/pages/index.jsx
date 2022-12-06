@@ -1,10 +1,13 @@
 import React from "react"
 
+const isBrowser = typeof window !== "undefined"
 export default function IndexPage() {
-  const {netlifyIdentity} = window
+  let netlifyIdentity = undefined
+  if(isBrowser) {
+    netlifyIdentity = window.netlifyIdentity
+  }
   return <>
-    <h1>Hello</h1>
-    <button onClick={()=> netlifyIdentity.setLocale('fr')}>Change Lang</button>
-    <button onClick={()=> netlifyIdentity.open()}>Click brah</button>
+    <button onClick={() => netlifyIdentity.open()}>Login</button>
+    <p>Build something</p>
   </>
 }
