@@ -7,3 +7,5 @@
     publish =  "public"
 [context.production.environment]
     NODE_VERSION = "19.1.0"
+[functions]
+    node_bundler = "esbuild"

@@ -6,6 +6,6 @@ export default function IndexPage() {
     setNetlifyIdentity(window.netlifyIdentity)
   },[])
 
-  if(netlifyIdentity === undefined) return <button>Loading...</button>
-  return <button onClick={()=> netlifyIdentity.open()}>Log Data</button>
+  if(!netlifyIdentity) return <button>Loading...</button>
+  return <button onClick={()=> netlifyIdentity.open()}>Sign-In</button>
 }
